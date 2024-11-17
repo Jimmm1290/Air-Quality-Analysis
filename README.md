@@ -15,8 +15,9 @@
 ## Section 2: Setup Environment
 
 ```
-conda create --prefix ./env --file requirements.txt
+conda create --prefix ./env python=3.11.5
 conda activate ./env
+pip install -r requirements.txt
 ```
 
 **Note:** Prefix disini berarti menggunakan directory path sebagai nama environment. Oleh karena itu, disarankan untuk masuk terlebih dahulu ke directory project di anaconda prompt lalu menjalankan aktivasi environtment.
