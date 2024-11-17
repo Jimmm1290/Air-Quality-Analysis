@@ -1,0 +1,12 @@
+python==3.11.5
+numpy
+pandas
+matplotlib
+seaborn
+streamlit
+babel
+scipy
+pillow
+notebook
+jupyterlab
+scikit-learn
