@@ -14,6 +14,20 @@
 
 ## Section 2: Setup Environment
 
+1. Clone Github Repository
+
+```
+git clone https://github.com/Jimmm1290/Air-Quality-Analysis.git
+```
+
+2. Masuk Directory Air-Quality-Analysis
+
+```
+cd Air-Quality-Analysis
+```
+
+3. Setup Anaconda Environtment
+
 ```
 conda create --prefix ./env python=3.11.5
 conda activate ./env
