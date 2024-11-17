@@ -210,7 +210,9 @@ def create_pollution_wind(df):
 def dashboard():
     st.title("🍃Air Quality Analysis🍃")
 
-    all_df = pd.read_csv("main-data.csv")
+    all_df = pd.read_csv(
+        "https://raw.githubusercontent.com/Jimmm1290/Air-Quality-Analysis/refs/heads/main/Dashboard/main-data.csv"
+    )
     all_df["date"] = pd.to_datetime(all_df["date"])
 
     min_date = all_df["date"].min()
