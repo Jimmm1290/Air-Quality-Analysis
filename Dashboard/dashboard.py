@@ -220,7 +220,7 @@ def dashboard():
         st.image(
             "https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini-768x432.png"
         )
-        st.subheader("Input Data Relevan")
+        st.subheader("Parameter")
         start_date, end_date = st.date_input(
             label="Rentang Waktu",
             min_value=min_date,
