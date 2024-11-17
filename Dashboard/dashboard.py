@@ -199,6 +199,14 @@ def create_rain_by_month(df):
     return rain_by_month
 
 
+def create_pollution_wind(df):
+    pollution_by_wd = (
+        df.groupby(by="wd").agg({"Total_AQI": "median", "WSPM": "median"}).reset_index()
+    )
+
+    return pollution_by_wd
+
+
 def dashboard():
     st.title("🍃Air Quality Analysis🍃")
 
@@ -240,6 +248,7 @@ def dashboard():
     pollution_by_month_df = create_pollution_by_month(main_df)
     pollution_rain_df = create_pollution_rain_year(main_df)
     rain_by_month_df = create_rain_by_month(main_df)
+    pollution_wind_df = create_pollution_wind(main_df)
 
     def aqi_plot(df):
         """
@@ -589,8 +598,27 @@ def dashboard():
 
         st.altair_chart(chart, use_container_width=True)
 
+    def pollution_wind_plot(df):
+        sorted_df = df.sort_values("Total_AQI", ascending=False)
+        st.subheader("Distribusi Polusi Udara Berdasarkan Arah Mata Angin")
+
+        colorlist = [color for color in range(17)]
+
+        chart = (
+            alt.Chart(sorted_df)
+            .mark_bar(color="#3bc9db")
+            .encode(
+                y=alt.Y("wd:N", title=None, sort=None),
+                x=alt.X("Total_AQI:Q", title="Total_AQI"),
+            )
+        )
+
+        st.altair_chart(chart, use_container_width=True)
+
     ## Menampilkan visualisasi
-    tab1, tab2, tab3, tab4 = st.tabs(["Quality", "Station", "Time", "Rain"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(
+        ["Quality", "Station", "Time", "Rain", "Wind"]
+    )
 
     with tab1:
         aqi_plot(aqi_df)
@@ -608,6 +636,9 @@ def dashboard():
     with tab4:
         pollution_rain_plot(pollution_rain_df)
         rain_by_month_plot(rain_by_month_df)
+
+    with tab5:
+        pollution_wind_plot(pollution_wind_df)
 
 
 if __name__ == "__main__":
