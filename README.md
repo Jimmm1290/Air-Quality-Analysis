@@ -14,7 +14,7 @@
 
 ## Section 2: Setup Environment
 
-1. Clone Github Repository
+1. Clone Github Repository di dalam folder yang sudah dipersiapkan
 
 ```
 git clone https://github.com/Jimmm1290/Air-Quality-Analysis.git
